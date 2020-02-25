@@ -1,0 +1,214 @@
+(base) hallgato@tanterem:~$ conda install -c anaconda git
+Collecting package metadata (current_repodata.json): done
+Solving environment: done
+
+# All requested packages already installed.
+
+(base) hallgato@tanterem:~$ git clone https://github.com/patakrik/Szoftverfejleszt-s
+Cloning into 'Szoftverfejleszt-s'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+(base) hallgato@tanterem:~$ ls
+anaconda3     eclipse.desktop    netbeans-11.2     Sablonok
+Asztal        eclipse-workspace  NetBeansProjects  Szoftverfejleszt-s
+bogomips      examples.desktop   Nyilvános         vegtelen
+bogomips.c    IdeaProjects       pattogas.cpp      vegtelen.cpp
+DEADJOE       Képek              prog1             Videók
+Dokumentumok  Letöltések         Projects          Zenék
+(base) hallgato@tanterem:~$ ls Szoftverfejleszt-s/
+README.md
+(base) hallgato@tanterem:~$ mkdir szoft
+(base) hallgato@tanterem:~$ cd szoft/
+(base) hallgato@tanterem:~/szoft$ git init
+Initialized empty Git repository in /home/hallgato/szoft/.git/
+(base) hallgato@tanterem:~/szoft$ ls -la
+összesen 12
+drwxr-xr-x  3 hallgato hallgato 4096 febr  25 08:22 .
+drwxr-xr-x 42 hallgato hallgato 4096 febr  25 08:21 ..
+drwxr-xr-x  6 hallgato hallgato 4096 febr  25 08:22 .git
+(base) hallgato@tanterem:~/szoft$ git config --global user.name "Patrik"
+(base) hallgato@tanterem:~/szoft$ git config --global user.email "patak1998@gmail.com"
+(base) hallgato@tanterem:~/szoft$ git remote add origin https://github.com/patakrik/Szoftverfejleszt-s
+(base) hallgato@tanterem:~/szoft$ git pull origin master
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+From https://github.com/patakrik/Szoftverfejleszt-s
+ * branch            master     -> FETCH_HEAD
+ * [new branch]      master     -> origin/master
+(base) hallgato@tanterem:~/szoft$ ls
+README.md
+(base) hallgato@tanterem:~/szoft$ touch 1.txt
+(base) hallgato@tanterem:~/szoft$ ls
+1.txt  README.md
+(base) hallgato@tanterem:~/szoft$ git add *
+(base) hallgato@tanterem:~/szoft$ git commit -m "Added 1.txt"
+[master 649d77c] Added 1.txt
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 1.txt
+(base) hallgato@tanterem:~/szoft$ git push origin master
+Username for 'https://github.com': patakrik
+Password for 'https://patakrik@github.com': 
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 270 bytes | 270.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/patakrik/Szoftverfejleszt-s
+   c82af44..649d77c  master -> master
+(base) hallgato@tanterem:~/szoft$ git config credential.helper cache 3600
+(base) hallgato@tanterem:~/szoft$ git status
+On branch master
+nothing to commit, working tree clean
+(base) hallgato@tanterem:~/szoft$ git log
+commit 649d77c4dd638f66ab0e131331ef028ada1fe64d (HEAD -> master, origin/master)
+Author: Patrik <patak1998@gmail.com>
+Date:   Tue Feb 25 08:30:27 2020 +0100
+
+    Added 1.txt
+
+commit c82af44e3d311cefe4ca12309ce9dae8005e5390
+Author: Patrik <36334711+patakrik@users.noreply.github.com>
+Date:   Tue Feb 25 08:19:55 2020 +0100
+
+    Initial commit
+(base) hallgato@tanterem:~/szoft$ git log --online
+fatal: unrecognized argument: --online
+(base) hallgato@tanterem:~/szoft$ git log --oneline
+649d77c (HEAD -> master, origin/master) Added 1.txt
+c82af44 Initial commit
+(base) hallgato@tanterem:~/szoft$ echo "Baromsag"> 1.txt
+(base) hallgato@tanterem:~/szoft$ cat 1.txt 
+Baromsag
+(base) hallgato@tanterem:~/szoft$ git add *
+(base) hallgato@tanterem:~/szoft$ git commit -m "nagyon jo commit"
+[master 01eaadd] nagyon jo commit
+ 1 file changed, 1 insertion(+)
+(base) hallgato@tanterem:~/szoft$ git log --oneline
+01eaadd (HEAD -> master) nagyon jo commit
+649d77c (origin/master) Added 1.txt
+c82af44 Initial commit
+(base) hallgato@tanterem:~/szoft$ git config ---global core.editor "nano"
+error: unknown option `-global'
+usage: git config [<options>]
+
+Config file location
+    --global              use global config file
+    --system              use system config file
+    --local               use repository config file
+    --worktree            use per-worktree config file
+    -f, --file <file>     use given config file
+    --blob <blob-id>      read config from given blob object
+
+Action
+    --get                 get value: name [value-regex]
+    --get-all             get all values: key [value-regex]
+    --get-regexp          get values for regexp: name-regex [value-regex]
+    --get-urlmatch        get value specific for the URL: section[.var] URL
+    --replace-all         replace all matching variables: name value [value_regex]
+    --add                 add a new variable: name value
+    --unset               remove a variable: name [value-regex]
+    --unset-all           remove all matches: name [value-regex]
+    --rename-section      rename section: old-name new-name
+    --remove-section      remove a section: name
+    -l, --list            list all
+    -e, --edit            open an editor
+    --get-color           find the color configured: slot [default]
+    --get-colorbool       find the color setting: slot [stdout-is-tty]
+
+Type
+    -t, --type <>         value is given this type
+    --bool                value is "true" or "false"
+    --int                 value is decimal number
+    --bool-or-int         value is --bool or --int
+    --path                value is a path (file or directory name)
+    --expiry-date         value is an expiry date
+
+Other
+    -z, --null            terminate values with NUL byte
+    --name-only           show variable names only
+    --includes            respect include directives on lookup
+    --show-origin         show origin of config (file, standard input, blob, command line)
+    --default <value>     with --get, use default value when missing entry
+
+(base) hallgato@tanterem:~/szoft$ ^C
+(base) hallgato@tanterem:~/szoft$ git branch new_feature
+(base) hallgato@tanterem:~/szoft$ git status
+On branch master
+nothing to commit, working tree clean
+(base) hallgato@tanterem:~/szoft$ git checkout
+(base) hallgato@tanterem:~/szoft$ git checkout new_feature
+Switched to branch 'new_feature'
+(base) hallgato@tanterem:~/szoft$ echo "Ez a new feature" > 1.txt
+(base) hallgato@tanterem:~/szoft$ cat 1.txt 
+Ez a new feature
+(base) hallgato@tanterem:~/szoft$ git add *
+(base) hallgato@tanterem:~/szoft$ git commit -m "Kesz a new feature"
+[new_feature d03860a] Kesz a new feature
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+(base) hallgato@tanterem:~/szoft$ git checkout master
+Switched to branch 'master'
+(base) hallgato@tanterem:~/szoft$ git checkout -b bugfix
+Switched to a new branch 'bugfix'
+(base) hallgato@tanterem:~/szoft$ echo "Ez a bugfix" > 1.txt 
+(base) hallgato@tanterem:~/szoft$ cat 1.txt 
+Ez a bugfix
+(base) hallgato@tanterem:~/szoft$ git add *
+(base) hallgato@tanterem:~/szoft$ git commit -m "Kesz a bugfix"
+[bugfix 6ea7207] Kesz a bugfix
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+(base) hallgato@tanterem:~/szoft$ git checkout master
+Switched to branch 'master'
+(base) hallgato@tanterem:~/szoft$ git merge bugfix
+Updating 01eaadd..6ea7207
+Fast-forward
+ 1.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+(base) hallgato@tanterem:~/szoft$ git branch -d bugfix
+Deleted branch bugfix (was 6ea7207).
+(base) hallgato@tanterem:~/szoft$ git checkout new_feature
+Switched to branch 'new_feature'
+(base) hallgato@tanterem:~/szoft$ git merge master 
+Auto-merging 1.txt
+CONFLICT (content): Merge conflict in 1.txt
+Automatic merge failed; fix conflicts and then commit the result.
+(base) hallgato@tanterem:~/szoft$ git status
+On branch new_feature
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+	both modified:   1.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+(base) hallgato@tanterem:~/szoft$ git add *
+(base) hallgato@tanterem:~/szoft$ git status
+On branch new_feature
+All conflicts fixed but you are still merging.
+  (use "git commit" to conclude merge)
+
+Changes to be committed:
+	modified:   1.txt
+
+(base) hallgato@tanterem:~/szoft$ git commit -m "merging new feature and master"
+[new_feature bff04c5] merging new feature and master
+(base) hallgato@tanterem:~/szoft$ cat 1.txt
+Ez a new feature+bugfix
+(base) hallgato@tanterem:~/szoft$ git push origin master
+Username for 'https://github.com': patakrik
+Password for 'https://patakrik@github.com': 
+To https://github.com/patakrik/Szoftverfejleszt-s
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/patakrik/Szoftverfejleszt-s'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+(base) hallgato@tanterem:~/szoft$ 
